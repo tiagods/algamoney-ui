@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <h1>Lançamentos</h1>
+    </div>
+    <div class="ui-g-12 ui-fluid">
+      <label>Descri&ccedil;&atilde;o:</label>
+      <input type="text" pInputText pTooltip="Informe uma descrição" tooltipPosition="top">
+    </div>
+    <div class="ui-g-12">
+      <label style="display: block">Data:</label>
+      <input type="text" pInputText style="width: 95px" pTooltip="Informe uma data inicial" tooltipPosition="top">
+      <label>at&eacute;</label>
+      <input type="text" pInputText style="width: 95px" pTooltip="Informe uma data final" tooltipPosition="top">
+    </div>
+    <div class="ui-g-12">
+      <p-button label="Pesquisar" type="submit"></p-button>
+    </div>
+  </div>
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <p-table [value]="lancamentos" [paginator]="true" [rows]="2" [responsive]="true">
+        <ng-template pTemplate="header">
+            <tr>
+              <th>Pessoa</th>
+              <th>Descrição</th>
+              <th class="header-data">Vencimento</th>
+              <th class="header-data">Pagamento</th>
+              <th class="header-valor">Valor</th>
+              <th class="header-acoes"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-lanc>
+            <tr>
+              <td>{{lanc.pessoa}}</td>
+              <td>{{lanc.descricao}}</td>
+              <td class="col-data">{{lanc.dataVencimento}}</td>
+              <td class="col-data">{{lanc.dataPagamento}}</td>
+              <td class="col-valor">
+                <span [ngStyle]="{color: lanc.tipo === 'DESPESA' ? 'red':'blue'}">{{lanc.valor}}</span>
+              </td>
+              <td class="col-acoes">
+                <a pButton style="margin-right: 10px" icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
+                <button pButton icon="pi pi-trash" pTooltip="Remover" tooltipPosition="top"></button>
+              </td>
+            </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div class="ui-g-12">
+      <p-button label="Novo Lançamento"></p-button>
+    </div>
+  </div>
+</div>

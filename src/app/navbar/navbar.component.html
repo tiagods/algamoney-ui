@@ -1,1 +1,16 @@
-<nav class="navbar"></nav>
+<nav class="navbar">
+  <div class="container">
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <a href="#" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu"><i class="pi pi-bars"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <ul class="navbar-menu" [hidden]="!exibindoMenu">
+    <li class="navbar-usuario">Meu Usuario</li>
+    <li class="navbar-menuitem"><a href="#">Lançamento</a></li>
+    <li class="navbar-menuitem"><a href="#">Pessoas</a></li>
+    <li class="navbar-menuitem"><a href="#">Logout</a></li>
+  </ul>
+</nav>

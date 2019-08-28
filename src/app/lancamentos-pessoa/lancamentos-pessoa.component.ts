@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './lancamentos-pessoa.component.html',
   styleUrls: ['./lancamentos-pessoa.component.css']
 })
-export class LancamentosPessoaComponent{
+export class LancamentosPessoaComponent {
   title = 'algamoney-ui';
   pessoas = [
     { nome: 'Manoel Pinheiro', cidade: 'Uberlandia', estado: 'MG', status: 'Ativo'},

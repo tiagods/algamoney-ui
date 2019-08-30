@@ -11,13 +11,15 @@ import {TooltipModule} from 'primeng/tooltip';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LancamentosPessoaComponent } from './lancamentos-pessoa/lancamentos-pessoa.component';
+import { CampoColoridoDirective } from './campo-colorido.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     LancamentosPesquisaComponent,
     NavbarComponent,
-    LancamentosPessoaComponent
+    LancamentosPessoaComponent,
+    CampoColoridoDirective
   ],
   imports: [
     ButtonModule,

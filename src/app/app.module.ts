@@ -10,7 +10,7 @@ import {TableModule} from 'primeng/table';
 import {TooltipModule} from 'primeng/tooltip';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { LancamentosPessoaComponent } from './lancamentos-pessoa/lancamentos-pessoa.component';
+import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { CampoColoridoDirective } from './campo-colorido.directive';
 
 @NgModule({
@@ -18,7 +18,7 @@ import { CampoColoridoDirective } from './campo-colorido.directive';
     AppComponent,
     LancamentosPesquisaComponent,
     NavbarComponent,
-    LancamentosPessoaComponent,
+    PessoasPesquisaComponent,
     CampoColoridoDirective
   ],
   imports: [

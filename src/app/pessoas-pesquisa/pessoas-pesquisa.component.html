@@ -1,7 +1,7 @@
 <div class="container">
   <div class="ui-g">
     <div class="ui-g-12">
-      <h1>Lançamentos</h1>
+      <h1>Lançamentos de Pessoas</h1>
     </div>
     <div class="ui-g-12 ui-fluid">
       <label>Nome:</label>
@@ -28,7 +28,10 @@
               <td>{{lanc.nome}}</td>
               <td>{{lanc.cidade}}</td>
               <td>{{lanc.estado}}</td>
-              <td>{{lanc.status}}</td>
+              <td>
+                <a href="javascript:;" [pTooltip]="lanc.ativo ? 'Desativar' : 'Ativar'" 
+                tooltipPosition="top">{{lanc.ativo ? 'Ativo' : 'Inativo'}}</a>
+             </td>
               <td class="col-acoes">
                 <a pButton style="margin-right: 10px" icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
                 <button pButton icon="pi pi-trash" pTooltip="Remover" tooltipPosition="top"></button>

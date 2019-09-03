@@ -34,10 +34,11 @@
             <tr>
               <td>{{lanc.pessoa}}</td>
               <td>{{lanc.descricao}}</td>
-              <td class="col-data">{{lanc.dataVencimento}}</td>
-              <td class="col-data">{{lanc.dataPagamento}}</td>
+              <td class="col-data">{{lanc.dataVencimento | date:'dd/MM/y'}}</td>
+              <td class="col-data">{{lanc.dataPagamento | date:'dd/MM/y'}}
+              </td>
               <td class="col-valor">
-                <span [ngStyle]="{color: lanc.tipo === 'DESPESA' ? 'red':'blue'}">{{lanc.valor}}</span>
+                <span [ngStyle]="{color: lanc.tipo === 'DESPESA' ? 'red':'blue'}">{{lanc.valor | currency : 'BRL':true:'1.2-2'}}</span>
               </td>
               <td class="col-acoes">
                 <a pButton style="margin-right: 10px" icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>

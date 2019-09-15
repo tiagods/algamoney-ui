@@ -1,9 +1,5 @@
 <div class="container">
   <form autocomplete="off" #lancamentoForm="ngForm" (ngSubmit)="salvar(lancamentoForm)">
-    <div *ngIf="lancamentoForm.invalid && lancamentoForm.touched" class="alert alert-danger">
-      Preencha todos os campos corretamente!
-    </div>
-
     <p-message *ngIf="lancamentoForm.invalid && lancamentoForm.touched"
       severity="error" text="Preencha todos os campos corretamente!">
     </p-message>

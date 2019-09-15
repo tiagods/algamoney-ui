@@ -24,6 +24,7 @@ export class LancamentoCadastroComponent {
   ];
 
   salvar(form: NgForm) {
-    console.log(form.value);
+    console.log(form.value)
+    form.reset({valor: '0,00'});
   }
 }

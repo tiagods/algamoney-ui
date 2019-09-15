@@ -1,56 +1,62 @@
 <div class="container">
   <form autocomplete="off" #lancamentoForm="ngForm" (ngSubmit)="salvar(lancamentoForm)">
+
     <p-message *ngIf="lancamentoForm.invalid && lancamentoForm.touched"
       severity="error" text="Preencha todos os campos corretamente!">
     </p-message>
+
     <div class="ui-g">
       <div class="ui-g-12">
         <h1>Novo Lançamento</h1>
       </div>
 
       <div class="ui-g-12">
-          <p-selectButton [options]="tipos" #tipo name="tipo" ngModel></p-selectButton>
+          <p-selectButton class="ng-invalid" [options]="tipos" #tipo="ngModel" name="tipo" ngModel required></p-selectButton>
+          <p-message *ngIf="tipo.hasError('required') && tipo.touched" severity="error" text="Campo é obrigatório"></p-message>
       </div>
 
       <div class="ui-sm-12 ui-g-6 ui-md-3 ui-fluid">
-        <label>Vencimento</label>
+        <label>Vencimento*:</label>
         <p-calendar [showIcon]="true" dateFormat="dd/mm/yy"
-        [inline]="false" [readonlyInput]="false" name="vencimento" ngModel #vencimento="ngModel"></p-calendar>
+        [inline]="false" [readonlyInput]="false" name="vencimento" ngModel #vencimento="ngModel" required></p-calendar>
+        <p-message *ngIf="vencimento.hasError('required') && vencimento.touched" severity="error" text="Campo é obrigatório"></p-message>
       </div>
 
       <div class="ui-sm-12 ui-g-6 ui-md-3 ui-fluid">
-        <label>{{tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
+        <label>{{tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}:</label>
         <p-calendar [showIcon]="true" dateFormat="dd/mm/yy"
-        [inline]="false" [readonlyInput]="false" name="pagamento" ngModel #pagamento="ngModel"></p-calendar>
+        [inline]="false" [readonlyInput]="false" name="dataFIm" ngModel #dataFIm="ngModel"></p-calendar>
       </div>
 
       <div class="ui-sm-12 ui-g-8 ui-fluid">
-        <label>Descrição: {{ descricao.errors | json}}</label>
+        <label>Descrição*:</label>
         <input type="text" pInputText name="descricao"
         ngModel #descricao="ngModel" required minlength="5" class="ng-dirty ng-invalid">
-
-        <!-- <div class="ui-messages ui-messages-error">Teste</div> -->
-        <p-message *ngIf="descricao.hasError('required') && descricao.touched" severity="error" text="Campo é obrigatório"></p-message>
-        <p-message *ngIf="descricao.hasError('minlength') && descricao.touched" severity="error" text="Campo deve ter no mínimo 5 caracteres!"></p-message>
+        <app-message [control]="descricao" error="required" text="Campo é obrigatório">/</app-message>
+        <app-message [control]="descricao" error="minlength"
+        text="Campo deve ter no mínimo {{descricao.errors?.minlength?.requiredLength}} caracteres!">/</app-message>
       </div>
 
       <div class="ui-sm-12 ui-g-4 ui-fluid">
-        <label>Valor:</label>
+        <label>Valor*:</label>
         <input pInputText currencyMask placeholder="0,00" value="0,00" required ngModel name="valor" #valor="ngModel">
-        <p-message *ngIf="valor.hasError('required') && valor.touched" severity="error" text="Campo é obrigatório"></p-message>
+        <p-message *ngIf="valor.hasError('required') && valor.dirty" severity="error" text="Campo é obrigatório"></p-message>
       </div>
 
       <div class="ui-sm-12 ui-g-6 ui-fluid">
-        <label>Categoria:</label>
-        <p-dropdown [options]="categorias" placeholder="Selecione" #categoria></p-dropdown>
+        <label>Categoria*:</label>
+        <p-dropdown [options]="categorias" placeholder="Selecione" name="categoria" ngModel #categoria="ngModel" required></p-dropdown>
+        <app-message [control]="categoria" error="required" text="Campo é obrigatório">/</app-message>
       </div>
       <div class="ui-sm-12 ui-g-6 ui-fluid">
-        <label>Pessoa:</label>
-        <p-dropdown [options]="pessoas" [filter]="true" placeholder="Selecione" #pessoa></p-dropdown>
+        <label>Pessoa*:</label>
+        <p-dropdown [options]="pessoas" [filter]="true" placeholder="Selecione" name="pessoa" ngModel #pessoa="ngModel" required></p-dropdown>
+        <app-message [control]="pessoa" error="required" text="Campo é obrigatório">/</app-message>
       </div>
       <div class="ui-g-12 ui-fluid">
-        <h3>Observação</h3>
-        <textarea rows="5" cols="30" pInputTextarea></textarea>
+        <h3>Observação*:</h3>
+        <textarea rows="5" cols="30" pInputTextarea required ngModel name="observacao" #observacao="ngModel"></textarea>
+        <app-message [control]="observacao" error="required" text="Informe uma observação">/</app-message>
       </div>
     </div>
     <div class="ui-sm-12 ui-g-2 ui-md-1">

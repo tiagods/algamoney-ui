@@ -27,6 +27,9 @@ import { CampoColoridoDirective } from './campo-colorido.directive';
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { FormsModule } from '@angular/forms';
+import { MessageComponent } from './message/message.component';
+import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.component';
+import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
 
 
 export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
@@ -34,7 +37,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     allowNegative: false,
     decimal: ",",
     precision: 2,
-    prefix: "R$ ",
+    prefix: "",
     suffix: "",
     thousands: "."
 };
@@ -47,7 +50,10 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     PessoasPesquisaComponent,
     CampoColoridoDirective,
     LancamentoCadastroComponent,
-    PessoaCadastroComponent
+    PessoaCadastroComponent,
+    MessageComponent,
+    LancamentosGridComponent,
+    PessoasGridComponent
   ],
   imports: [
     ButtonModule,

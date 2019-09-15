@@ -1,5 +1,10 @@
 <div class="container">
-    <form>
+    <form autocomplete="off" #lancamentoForm="ngForm" (ngSubmit)="salvar(lancamentoForm)">
+
+      <p-message *ngIf="lancamentoForm.invalid && lancamentoForm.touched"
+        severity="error" text="Preencha todos os campos corretamente!">
+      </p-message>
+
       <div class="ui-g">
         <div class="ui-g-12">
           <h1>Nova Pessoa</h1>
@@ -7,17 +12,21 @@
 
         <div class="ui-g-12 ui-fluid">
             <label>Nome:</label>
-            <input type="text" pInputText>
+            <input pInputText class="ng-dirty ng-invalid" type="text" required minlength="5" name="nome" ngModel #nome="ngModel">
+            <app-message [control]="nome" error="required" text="Campo é obrigatório"></app-message>
+            <app-message [control]="nome" error="minlength" text="Minimo de {{nome.errors?.minlength?.requiredLength}} caracteres"></app-message>
         </div>
 
         <div class="ui-sm-12 ui-g-8 ui-fluid">
           <label>Logradouro:</label>
-          <input type="text" pInputText>
+          <input class="ng-dirty ng-invalid" type="text" pInputText required ngModel name="logradouro" #logradouro="ngModel">
+          <app-message [control]="logradouro" error="required" text="Campo é obrigatório"></app-message>
         </div>
 
         <div class="ui-sm-12 ui-g-4 ui-fluid">
           <label>Numero:</label>
-          <input type="text" pInputText>
+          <input type="text" pInputText name="numero" required ngModel #numero="ngModel">
+          <app-message [control]="numero" error="required" text="Campo é obrigatório"></app-message>
         </div>
 
         <div class="ui-sm-12 ui-g-4 ui-fluid">
@@ -27,27 +36,33 @@
 
         <div class="ui-sm-12 ui-g-4 ui-fluid">
           <label>Bairro:</label>
-          <input type="text" pInputText>
+          <input type="text" pInputText name="bairro" ngModel #bairro="ngModel" required>
+          <app-message [control]="bairro" error="required" text="Campo é obrigatório"></app-message>
         </div>
 
         <div class="ui-sm-12 ui-g-4 ui-fluid">
           <label>CEP:</label>
-          <p-inputMask mask="99.999-999" placeholder="00.000-000"></p-inputMask>
+          <p-inputMask mask="99.999-999" placeholder="00.000-000" required name="cep" ngModel #cep="ngModel"></p-inputMask>
+          <app-message [control]="cep" error="required" text="Campo é obrigatório"></app-message>
+
         </div>
 
         <div class="ui-sm-12 ui-g-6 ui-fluid">
           <label>Cidade:</label>
-          <p-dropdown [options]="cidades" [filter]="true" placeholder="Selecione"></p-dropdown>
+          <p-dropdown [options]="cidades" [filter]="true" placeholder="Selecione" name="cidade" ngModel #cidade="ngModel" required></p-dropdown>
+          <app-message [control]="cidade" error="required" text="Campo é obrigatório"></app-message>
         </div>
 
         <div class="ui-sm-12 ui-g-6 ui-fluid">
           <label>Estado:</label>
-          <p-dropdown [options]="estados" [filter]="true" placeholder="Selecione"></p-dropdown>
+          <p-dropdown [options]="estados" [filter]="true" placeholder="Selecione" name="estado" ngModel #estado="ngModel" required></p-dropdown>
+          <app-message [control]="estado" error="required" text="Campo é obrigatório"></app-message>
         </div>
 
       </div>
       <div class="ui-sm-12 ui-g-2 ui-md-1">
-          <button type="submit" icon="pi pi-save" pButton label="Salvar" class="ui-button-primary"></button>
+          <button type="submit" icon="pi pi-save" pButton label="Salvar" class="ui-button-primary"
+          [disabled]="lancamentoForm.invalid"></button>
       </div>
       <div class="ui-sm-12 ui-g-2 ui-md-1">
           <button type="button"icon="pi pi-plus" pButton label="Novo" class="ui-button-info"></button>
